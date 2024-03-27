@@ -6,9 +6,9 @@ using namespace std;
 int n, m;
 int dx[4] = { 1,0,-1,0 };
 int dy[4] = { 0,1,0,-1 };
-int grid[101][101];			// ÀÎÁ¢ Çà·Ä ±â¹İ ±×·¡ÇÁ
+int grid[101][101];			// ì¸ì ‘ í–‰ë ¬ ê¸°ë°˜ ê·¸ë˜í”„
 bool visited[101][101]; 
-queue<pair<int, int>> q;	// ³ëµå = ÁÂÇ¥ = pair<int, int>
+queue<pair<int, int>> q;	// ë…¸ë“œ = ì¢Œí‘œ = pair<int, int>
 
 bool InRange(int x, int y) {
 	return x >= 0 && x < n && y >= 0 && y < m;
@@ -35,7 +35,7 @@ int main() {
 	q.push(make_pair(0, 0));
 	visited[0][0] = true;
 
-	// BFS ¼öÇà (¹İº¹¹®)
+	// BFS ìˆ˜í–‰ (ë°˜ë³µë¬¸)
 	while (!q.empty()) {
 		int cur_x = q.front().first;
 		int cur_y = q.front().second;
