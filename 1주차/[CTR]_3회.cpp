@@ -32,10 +32,10 @@ void swap(int x, int y) {
 	y = temp;
 }
 
-//	<ÆÄ¶ó¹ÌÅÍ cnt¸¦ ÂüÁ¶ÀÚ·Î ³Ñ°ÜÁÖ´Â ÀÌÀ¯>
-//	Àç±ÍÇÔ¼ö ³»ºÎ¿¡¼­ ÂüÁ¶ º¯¼ö ¿¬»ê ¼öÇà ½Ã¿¡ ´ë»ó º¯¼öµµ °°ÀÌ º¯°æµÈ´Ù.
-//	ÂüÁ¶ÀÚ·Î ³Ñ°ÜÁÖÁö ¾ÊÀ¸¸é Àü´ÞµÈ °ª¸¸ º¹»çÇÏ´Â °ÍÀÌ¹Ç·Î ½ÇÁ¦ °ªÀ» º¯°æÇÏ´Â °ÍÀÌ ¾Æ´Ï´Ù. 
-//	(¹æ¹® ³ëµå ¼ö 0 Ãâ·ÂµÊ)
+//	<íŒŒë¼ë¯¸í„° cntë¥¼ ì°¸ì¡°ìžë¡œ ë„˜ê²¨ì£¼ëŠ” ì´ìœ >
+//	ìž¬ê·€í•¨ìˆ˜ ë‚´ë¶€ì—ì„œ ì°¸ì¡° ë³€ìˆ˜ ì—°ì‚° ìˆ˜í–‰ ì‹œì— ëŒ€ìƒ ë³€ìˆ˜ë„ ê°™ì´ ë³€ê²½ëœë‹¤.
+//	ì°¸ì¡°ìžë¡œ ë„˜ê²¨ì£¼ì§€ ì•Šìœ¼ë©´ ì „ë‹¬ëœ ê°’ë§Œ ë³µì‚¬í•˜ëŠ” ê²ƒì´ë¯€ë¡œ ì‹¤ì œ ê°’ì„ ë³€ê²½í•˜ëŠ” ê²ƒì´ ì•„ë‹ˆë‹¤. 
+//	(ë°©ë¬¸ ë…¸ë“œ ìˆ˜ 0 ì¶œë ¥ë¨)
 void dfs(int cur_x, int cur_y, int& cnt) {
 	visited[cur_x][cur_y] = true;
 	cnt++;
@@ -64,7 +64,7 @@ int main() {
 			int cnt = 0;
 			if (grid[i][j] != 0 && !visited[i][j]) {
 				dfs(i, j, cnt);
-				// dfs Å½»ö °á°ú ¸î °³ÀÇ ³ëµå¸¦ Å½»öÇß´ÂÁö º¤ÅÍ¿¡ ÀúÀå
+				// dfs íƒìƒ‰ ê²°ê³¼ ëª‡ ê°œì˜ ë…¸ë“œë¥¼ íƒìƒ‰í–ˆëŠ”ì§€ ë²¡í„°ì— ì €ìž¥
 				town_size.push_back(cnt);
 			}
 		}
