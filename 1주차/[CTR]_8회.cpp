@@ -1,18 +1,18 @@
 // https://www.codetree.ai/missions/2/problems/move-to-max-k-times/description
-// 1È¸Â÷ 40ºĞ °¡·® ¼Ò¿ä
+// 1íšŒì°¨ 40ë¶„ ê°€ëŸ‰ ì†Œìš”
 #include <iostream>
 #include <climits>
 #include <cstring>
 #include <queue>
 using namespace std;
 
-int n, k, r, c;	// r, c¿¡´Â Ãâ¹ß À§Ä¡°¡ °è¼Ó °»½ÅµÉ °ÅÀÓ
+int n, k, r, c;	// r, cì—ëŠ” ì¶œë°œ ìœ„ì¹˜ê°€ ê³„ì† ê°±ì‹ ë  ê±°ì„
 int dx[4] = { 1,0,-1,0 };
 int dy[4] = { 0,1,0,-1 };
 int grid[101][101];
 bool visited[101][101];
-queue<pair<int, int>> q;		// °íÁ¤µÈ Ãâ¹ß À§Ä¡ ±âÁØ BFS ¼öÇàÇÒ Å¥
-queue<pair<int, int>> start;	// BFS ¼öÇàÇÏ¸ç ¹ß°ßÇÑ ÃÖ´ñ°©ÀÎ Ä­ ÁÂÇ¥ ÀúÀå Å¥
+queue<pair<int, int>> q;		// ê³ ì •ëœ ì¶œë°œ ìœ„ì¹˜ ê¸°ì¤€ BFS ìˆ˜í–‰í•  í
+queue<pair<int, int>> start;	// BFS ìˆ˜í–‰í•˜ë©° ë°œê²¬í•œ ìµœëŒ“ê°‘ì¸ ì¹¸ ì¢Œí‘œ ì €ì¥ í
 
 bool InRange(int x, int y) {
 	return x >= 1 && x <= n && y >= 1 && y <= n;
@@ -21,7 +21,7 @@ bool InRange(int x, int y) {
 bool canGo(int x, int y) {
 	if (!InRange(x, y))
 		return false;
-	// Ãâ¹ßÁ¡¿¡ ÀÖ´Â °ªº¸´Ù Å« °ªÀ¸·Î´Â ÀÌµ¿ÇÒ ¼ö ¾øÀ½
+	// ì¶œë°œì ì— ìˆëŠ” ê°’ë³´ë‹¤ í° ê°’ìœ¼ë¡œëŠ” ì´ë™í•  ìˆ˜ ì—†ìŒ
 	else if (visited[x][y] || grid[x][y] >= grid[r][c])
 		return false;
 	else
@@ -40,13 +40,13 @@ int main() {
 	cin >> r >> c;
 	start.push(make_pair(r, c));
 	
-	// max_r, max_c¿¡´Â ½ÃÀÛ À§Ä¡ °ªº¸´Ù ÀÛÀº ¼ö Áß ÃÖ´ëÀÎ Ä­ÀÇ ÁÂÇ¥ ÀúÀå
+	// max_r, max_cì—ëŠ” ì‹œì‘ ìœ„ì¹˜ ê°’ë³´ë‹¤ ì‘ì€ ìˆ˜ ì¤‘ ìµœëŒ€ì¸ ì¹¸ì˜ ì¢Œí‘œ ì €ì¥
 	int max_r = r;
 	int max_c = c;
 	
 	while (!start.empty() && k > 0) {
-		// ÇöÀç Ä­º¸´Ù ÀÛÀº °ªµé Áß ÃÖ´ñ°ª ÀúÀåÇÒ º¯¼ö
-		// ÇöÀç Ä­ °ª ÀÌ»óÀÎ Ä­Àº canGo ÇÔ¼ö ³»ºÎ¿¡¼­ ÀÌ¹Ì °É·¯Áü
+		// í˜„ì¬ ì¹¸ë³´ë‹¤ ì‘ì€ ê°’ë“¤ ì¤‘ ìµœëŒ“ê°’ ì €ì¥í•  ë³€ìˆ˜
+		// í˜„ì¬ ì¹¸ ê°’ ì´ìƒì¸ ì¹¸ì€ canGo í•¨ìˆ˜ ë‚´ë¶€ì—ì„œ ì´ë¯¸ ê±¸ëŸ¬ì§
 		int max_val = INT_MIN;
 		
 		r = start.front().first;
@@ -57,7 +57,7 @@ int main() {
 		q.push(make_pair(r, c));
 		visited[r][c] = true;
 
-		// Ãâ¹ß À§Ä¡ r, c¿¡ ´ëÇØ BFS ¼öÇà
+		// ì¶œë°œ ìœ„ì¹˜ r, cì— ëŒ€í•´ BFS ìˆ˜í–‰
 		while (!q.empty()) {
 			int cur_x = q.front().first;
 			int cur_y = q.front().second;
@@ -68,19 +68,19 @@ int main() {
 				int new_y = cur_y + dy[i];
 
 				if (canGo(new_x, new_y)) {
-					// ¹æ¹®ÇÑ Ä­¿¡ ´ëÇØ ÃÖ´ñ°ªÀÎ °æ¿ì ÁÂÇ¥ È®ÀÎÇÏ¿© °»½Å
+					// ë°©ë¬¸í•œ ì¹¸ì— ëŒ€í•´ ìµœëŒ“ê°’ì¸ ê²½ìš° ì¢Œí‘œ í™•ì¸í•˜ì—¬ ê°±ì‹ 
 					if (grid[new_x][new_y] > max_val) {
 						max_val = grid[new_x][new_y];
 						max_r = new_x;
 						max_c = new_y;
 					}
-					// ÃÖ´ñ°ª°ú °°À» ¶§´Â Çà ¹øÈ£°¡ ´õ ÀÛÀº °É·Î °»½Å 
+					// ìµœëŒ“ê°’ê³¼ ê°™ì„ ë•ŒëŠ” í–‰ ë²ˆí˜¸ê°€ ë” ì‘ì€ ê±¸ë¡œ ê°±ì‹  
 					else if (grid[new_x][new_y] == max_val) {
 						if (new_x < max_r) {
 							max_r = new_x;
 							max_c = new_y;
 						}
-						// Çà ¹øÈ£±îÁö °°À¸¸é ¿­ ¹øÈ£°¡ ´õ ÀÛÀº °É·Î °»½Å
+						// í–‰ ë²ˆí˜¸ê¹Œì§€ ê°™ìœ¼ë©´ ì—´ ë²ˆí˜¸ê°€ ë” ì‘ì€ ê±¸ë¡œ ê°±ì‹ 
 						else if (new_x == max_r && new_y < max_c) {
 							max_c = new_y;
 						}
@@ -92,11 +92,11 @@ int main() {
 			}
 		}
 
-		// ´ÙÀ½ ½ÃÀÛ À§Ä¡°¡ ÇöÀç ½ÃÀÛ À§Ä¡¶û °°Àº °æ¿ì = ÀÌµ¿ÇÒ ÁöÁ¡ ¾øÀ½
+		// ë‹¤ìŒ ì‹œì‘ ìœ„ì¹˜ê°€ í˜„ì¬ ì‹œì‘ ìœ„ì¹˜ë‘ ê°™ì€ ê²½ìš° = ì´ë™í•  ì§€ì  ì—†ìŒ
 		if (max_r == r && max_c == c)
 			break;
 		
-		// ÃÖÁ¾ÀûÀ¸·Î °»½ÅµÈ ÃÖ´ñ°ª Ä­À» »õ·Î¿î ½ÃÀÛ À§Ä¡·Î ÁöÁ¤
+		// ìµœì¢…ì ìœ¼ë¡œ ê°±ì‹ ëœ ìµœëŒ“ê°’ ì¹¸ì„ ìƒˆë¡œìš´ ì‹œì‘ ìœ„ì¹˜ë¡œ ì§€ì •
 		start.push(make_pair(max_r, max_c));
 		k--;
 	}
