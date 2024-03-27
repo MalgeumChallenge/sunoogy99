@@ -3,14 +3,14 @@
 #include <queue>
 using namespace std;
 
-int n, k, cnt;	// cnt : ¹æ¹® °¡´ÉÇÑ Ä­ ¼ö
+int n, k, cnt;	// cnt : ë°©ë¬¸ ê°€ëŠ¥í•œ ì¹¸ ìˆ˜
 int dx[4] = { 1,0,-1,0 };
 int dy[4] = { 0,1,0,-1 };
 int grid[101][101];
 bool visited[101][101];
 queue<pair<int, int>> q;
 
-// Ãâ¹ßÁ¡ÀÌ 1-based ±âÁØÀÌ¶ó range checkµµ 1-based ¹æ½ÄÀ¸·Î º¯°æ
+// ì¶œë°œì ì´ 1-based ê¸°ì¤€ì´ë¼ range checkë„ 1-based ë°©ì‹ìœ¼ë¡œ ë³€ê²½
 bool InRange(int x, int y) {
 	return x >= 1 && x <= n && y >= 1 && y <= n;
 }
@@ -18,7 +18,7 @@ bool InRange(int x, int y) {
 bool canGo(int x, int y) {
 	if (!InRange(x, y))
 		return false;
-	// ¹æ¹® °¡´ÉÇÑ ÁöÁ¡ÀÌ 1ÀÌ ¾Æ´Ï¶ó 0ÀÓ
+	// ë°©ë¬¸ ê°€ëŠ¥í•œ ì§€ì ì´ 1ì´ ì•„ë‹ˆë¼ 0ì„
 	else if (visited[x][y] || grid[x][y] == 1)
 		return false;
 	else
@@ -38,7 +38,7 @@ int main() {
 	for (int i = 0; i < k; i++) {
 		cin >> x >> y;
 
-		// ÀÌ¹Ì Ãâ¹ßÁ¡À» ¹æ¹®ÇÑ °æ¿ì ÇØ´ç À§Ä¡¿¡¼­ BFS ÁøÇàÇÏÁö ¾ÊÀ½
+		// ì´ë¯¸ ì¶œë°œì ì„ ë°©ë¬¸í•œ ê²½ìš° í•´ë‹¹ ìœ„ì¹˜ì—ì„œ BFS ì§„í–‰í•˜ì§€ ì•ŠìŒ
 		if (visited[x][y])
 			continue;
 
@@ -48,7 +48,7 @@ int main() {
 		while (!q.empty()) {
 			int cur_x = q.front().first;
 			int cur_y = q.front().second;
-			cnt++;	// ¹æ¹® °¡´ÉÇÑ ÁöÁ¡ +1 Ãß°¡
+			cnt++;	// ë°©ë¬¸ ê°€ëŠ¥í•œ ì§€ì  +1 ì¶”ê°€
 			q.pop();
 
 			for (int i = 0; i < 4; i++) {
